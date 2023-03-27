@@ -1,21 +1,24 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:myapp/main.dart';
+import 'loginScreen.dart';
 
-class SplashScreen extends StatefulWidget{
+class SplashScreen extends StatefulWidget {
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  void initState() {Timer(Duration(seconds: 2), () {
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-      return HomeScreen();
-    },));
-  });
+  void initState() {
+    Timer(Duration(seconds: 1), () {
+      Navigator.pushReplacement(context, MaterialPageRoute(
+        builder: (context) {
+          return LoginScreen();
+        },
+      ));
+    });
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
