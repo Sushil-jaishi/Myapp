@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/NavigationBar.dart';
+import 'package:myapp/dashboardScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -10,6 +13,9 @@ class _LoginScreenState extends State<LoginScreen> {
   dynamic icon;
   dynamic iconChange;
   dynamic passText;
+  var usernameController=TextEditingController();
+  var passwordController=TextEditingController();
+  var loginMessage='';
 
   void initState() {
     passText = true;
@@ -40,10 +46,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               child:
                                   Image.asset('assets/images/sofseetech.png'))),
                       Container(
-                        margin: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.height * 0.05),
                         child: Column(
                           children: [
+                            Container(
+                              margin: EdgeInsets.only(top: 3),
+                                height: 30,
+                                child: Text('$loginMessage',style: TextStyle(fontSize: 18,color: Colors.red),),
+
+                            ),
                             Container(
                               alignment: Alignment.topLeft,
                               child: Text(
@@ -59,6 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             /********************************USERNAME**************************************/
                             TextField(
+                              controller: usernameController,
                               decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.person,
                                       color: Color.fromRGBO(0, 0, 100, 1)),
@@ -77,6 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             /**********************************PASSWORD**************************************/
                             TextField(
+                              controller: passwordController,
                               obscureText: passText,
                               decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.lock,
@@ -124,7 +136,23 @@ class _LoginScreenState extends State<LoginScreen> {
                                       width: 1.6,
                                       color: Color.fromRGBO(0, 0, 100, 1))),
                               child: OutlinedButton(
-                                onPressed: () {},
+                                onPressed: () async {
+                                  var user = await SharedPreferences.getInstance();
+                                  var getNameFromController=usernameController.text.toString();
+                                  var verify= user.getString(getNameFromController);
+                                  if(passwordController.text.toString()==verify) {
+                                    var isLoggedIn= await SharedPreferences.getInstance();
+                                    isLoggedIn.setBool('LOGIN', true);
+                                    Navigator.pushReplacement(context,
+                                        MaterialPageRoute(builder: (context) {
+                                          return Navigation();
+                                        },));
+                                  }else{
+                                    loginMessage='Wrong Password';
+                                    setState(() {
+                                    });
+                                  }
+                                },
                                 child: Text(
                                   'LOGIN',
                                   style: TextStyle(
