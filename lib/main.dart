@@ -10,7 +10,7 @@ class Myapp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'MyApp',
+      title: 'Sofsee',
       theme: ThemeData(primarySwatch: Colors.blueGrey),
       home: SplashScreen(),
     );
