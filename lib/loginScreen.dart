@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/NavigationBar.dart';
 import 'package:myapp/dashboardScreen.dart';
+import 'package:myapp/profileScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginScreen> createState() => LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginScreen>{
   @override
   dynamic icon;
   dynamic iconChange;
@@ -183,5 +184,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             )));
+
   }
 }
