@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapp">
+    package="com.sushiljaishi.sofsee">
    <application
         android:label="sofsee"
         android:name="${applicationName}"

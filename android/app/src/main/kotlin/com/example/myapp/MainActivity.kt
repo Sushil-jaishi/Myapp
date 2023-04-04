@@ -1,4 +1,4 @@
-package com.example.myapp
+package com.sushiljaishi.sofsee
 
 import io.flutter.embedding.android.FlutterActivity
 

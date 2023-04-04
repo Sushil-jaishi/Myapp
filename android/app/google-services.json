@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "843546477469",
+    "project_id": "sofsee-4c78e",
+    "storage_bucket": "sofsee-4c78e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843546477469:android:ac6b1ca9e41de301726574",
+        "android_client_info": {
+          "package_name": "com.sushiljaishi.sofsee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843546477469-l15qakea9chtq084gnmpjpiok6hhc6te.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdjzBkPqS0b7a072BhiMRe2CAEe_RuWUU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843546477469-l15qakea9chtq084gnmpjpiok6hhc6te.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
