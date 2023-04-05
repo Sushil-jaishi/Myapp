@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/NavigationBar.dart';
 import 'package:myapp/dashboardScreen.dart';
@@ -6,17 +7,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
-  State<LoginScreen> createState() => LoginScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class LoginScreenState extends State<LoginScreen>{
+class _LoginScreenState extends State<LoginScreen>{
   @override
   dynamic icon;
   dynamic iconChange;
   dynamic passText;
   var usernameController=TextEditingController();
   var passwordController=TextEditingController();
-  var loginMessage='';
 
   void initState() {
     passText = true;
@@ -49,12 +49,7 @@ class LoginScreenState extends State<LoginScreen>{
                       Container(
                         child: Column(
                           children: [
-                            Container(
-                              margin: EdgeInsets.only(top: 3),
-                                height: 30,
-                                child: Text('$loginMessage',style: TextStyle(fontSize: 18,color: Colors.red),),
 
-                            ),
                             Container(
                               alignment: Alignment.topLeft,
                               child: Text(
@@ -137,22 +132,8 @@ class LoginScreenState extends State<LoginScreen>{
                                       width: 1.6,
                                       color: Color.fromRGBO(0, 0, 100, 1))),
                               child: OutlinedButton(
-                                onPressed: () async {
-                                  var user = await SharedPreferences.getInstance();
-                                  var getNameFromController=usernameController.text.toString();
-                                  var verify= user.getString(getNameFromController);
-                                  if(passwordController.text.toString()==verify) {
-                                    var isLoggedIn= await SharedPreferences.getInstance();
-                                    isLoggedIn.setBool('LOGIN', true);
-                                    Navigator.pushReplacement(context,
-                                        MaterialPageRoute(builder: (context) {
-                                          return Navigation();
-                                        },));
-                                  }else{
-                                    loginMessage='Wrong Password';
-                                    setState(() {
-                                    });
-                                  }
+                                onPressed: (){
+                                  userlogin();
                                 },
                                 child: Text(
                                   'LOGIN',
@@ -185,5 +166,21 @@ class LoginScreenState extends State<LoginScreen>{
               ],
             )));
 
+  }
+
+  void userlogin()async {
+    try{
+     await FirebaseAuth.instance.signInWithEmailAndPassword(
+         email: usernameController.text.toString(), password: passwordController.text.toString());
+     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+       return Navigation();
+     },));
+    }on FirebaseAuthException catch(e){
+      if(e.code=='user-not-found'){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('wrong username')));
+      }else if(e.code=='wrong-password'){
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('wrong password')));
+        }
+    }
   }
 }

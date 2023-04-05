@@ -12,7 +12,13 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    checkLoggedIn();
+    Timer(Duration(seconds: 1), () {
+      Navigator.pushReplacement(context, MaterialPageRoute(
+        builder: (context) {
+          return LoginScreen();
+        },
+      ));
+    });
   }
 
   @override
@@ -28,26 +34,4 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
   }
-
-  void checkLoggedIn () async{
-    var isLoggedIn = await SharedPreferences.getInstance();
-    var Login1 = isLoggedIn.getBool('LOGIN');
-    Timer(Duration(seconds: 1), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(
-        builder: (context) {
-          checkLoggedIn();
-          if(Login1!=null) {
-            if(Login1) {
-              return Navigation();
-            }else{
-              return LoginScreen();
-            }
-          }else{
-            return LoginScreen();
-          }
-        },
-      ));
-    });
-
-    }
 }

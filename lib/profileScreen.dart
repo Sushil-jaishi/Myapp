@@ -9,7 +9,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  LoginScreenState a = new LoginScreenState();
 
   @override
   Widget build(BuildContext context) {
@@ -95,9 +94,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           .width * 0.8,
                       height: 60,
                       child:  ElevatedButton(
-                        onPressed: ()async{
-                          var isLoggedIn = await SharedPreferences.getInstance();
-                          isLoggedIn.setBool('LOGIN', false);
+                        onPressed: (){
                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
                             return LoginScreen();
                           },));
