@@ -94,7 +94,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           .width * 0.8,
                       height: 60,
                       child:  ElevatedButton(
-                        onPressed: (){
+                        onPressed: ()async{
+                          var isloggedin =await SharedPreferences.getInstance();
+                          isloggedin.setBool('login', false);
                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
                             return LoginScreen();
                           },));

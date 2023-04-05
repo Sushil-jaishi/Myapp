@@ -12,13 +12,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Timer(Duration(seconds: 1), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(
-        builder: (context) {
-          return LoginScreen();
-        },
-      ));
-    });
+    checkLoggedIn();
   }
 
   @override
@@ -33,5 +27,26 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Center(child: Image.asset('assets/images/sofseetech.png'))),
       ),
     );
+  }
+  void checkLoggedIn () async{
+    var isloggedin = await SharedPreferences.getInstance();
+    var Login1 = isloggedin.getBool('login');
+    Timer(Duration(seconds: 1), () {
+      Navigator.pushReplacement(context, MaterialPageRoute(
+        builder: (context) {
+          checkLoggedIn();
+          if(Login1!=null) {
+            if(Login1) {
+              return Navigation();
+            }else{
+              return LoginScreen();
+            }
+          }else{
+            return LoginScreen();
+          }
+        },
+      ));
+    });
+
   }
 }

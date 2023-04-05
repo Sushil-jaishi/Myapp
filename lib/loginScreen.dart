@@ -172,6 +172,8 @@ class _LoginScreenState extends State<LoginScreen>{
     try{
      await FirebaseAuth.instance.signInWithEmailAndPassword(
          email: usernameController.text.toString(), password: passwordController.text.toString());
+     var isloggedin=await SharedPreferences.getInstance();
+     isloggedin.setBool('login', true);
      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
        return Navigation();
      },));
