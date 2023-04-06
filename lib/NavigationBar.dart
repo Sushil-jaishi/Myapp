@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/eLearning.dart';
+import 'package:myapp/payments.dart';
 import 'package:myapp/profileScreen.dart';
 
 import 'dashboardScreen.dart';
@@ -14,6 +16,8 @@ class _NavigationState extends State<Navigation> {
   var pagename = 'Home';
   final tabs = [
     DashboardScreen(),
+    ELearning(),
+    Payments(),
     ProfileScreen(),
   ];
 
@@ -29,12 +33,23 @@ class _NavigationState extends State<Navigation> {
       ),
       body: tabs[Index],
       bottomNavigationBar: BottomNavigationBar(
+        iconSize: 25,
+        selectedFontSize: 15,
+        type: BottomNavigationBarType.fixed,
+        unselectedLabelStyle: TextStyle(fontSize: 12),
         currentIndex: Index,
-        selectedIconTheme: IconThemeData(size: 30),
+        selectedIconTheme: IconThemeData(size: 30,),
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'E-Learning',
+          ),BottomNavigationBarItem(
+            icon: Icon(Icons.payment),
+            label: 'Payments',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -46,6 +61,10 @@ class _NavigationState extends State<Navigation> {
           if (index == 0) {
             pagename = 'Home';
           } else if (index == 1) {
+            pagename = 'E-Learning';
+          } else if (index == 2) {
+            pagename = 'Payments';
+          } else if (index == 3) {
             pagename = 'Profile';
           }
           setState(() {});
