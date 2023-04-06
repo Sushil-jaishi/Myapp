@@ -20,13 +20,14 @@ class DashboardScreen extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.verified_user,
-                        size: 70,
+                      Container(
+                        width:50,
+                        height: 50,
+                        child: Image.asset('assets/images/teachingicon.png'),
                       ),
                       Text(
-                        'data',
-                        style: TextStyle(fontSize: 20),
+                        'Online Class',
+                        style: TextStyle(fontSize: 16),
                       )
                     ],
                   ),
@@ -34,12 +35,12 @@ class DashboardScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
-                        Icons.verified_user,
-                        size: 70,
+                        Icons.timer,
+                        size: 50,
                       ),
                       Text(
-                        'data',
-                        style: TextStyle(fontSize: 20),
+                        'Timetable',
+                        style: TextStyle(fontSize: 16),
                       )
                     ],
                   ),
@@ -47,12 +48,40 @@ class DashboardScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
-                        Icons.verified_user,
-                        size: 70,
+                        Icons.calendar_month,
+                        size: 50,
                       ),
                       Text(
-                        'data',
-                        style: TextStyle(fontSize: 20),
+                        'Attendace',
+                        style: TextStyle(fontSize: 16),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width:50,
+                        height: 50,
+                        child: Image.asset('assets/images/exam.png'),
+                      ),
+                      Text(
+                        'Exams',
+                        style: TextStyle(fontSize: 16),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width:50,
+                        height: 50,
+                        child: Image.asset('assets/images/userclock.png'),
+                      ),
+                      Text(
+                        'Leaves',
+                        style: TextStyle(fontSize: 16),
                       )
                     ],
                   ),
@@ -60,12 +89,12 @@ class DashboardScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
-                        Icons.verified_user,
-                        size: 70,
+                        Icons.notifications,
+                        size: 50,
                       ),
                       Text(
-                        'data',
-                        style: TextStyle(fontSize: 20),
+                        'Notice',
+                        style: TextStyle(fontSize: 16),
                       )
                     ],
                   ),
@@ -73,38 +102,29 @@ class DashboardScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
-                        Icons.verified_user,
-                        size: 70,
+                        Icons.message,
+                        size: 50,
                       ),
                       Text(
-                        'data',
-                        style: TextStyle(fontSize: 20),
+                        'Complain',
+                        style: TextStyle(fontSize: 16),
                       )
                     ],
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.verified_user,
-                        size: 70,
+                      Container(
+                        width:45,
+                        height: 45,
+                        child: Image.asset('assets/images/more.png'),
+                      ),
+                      SizedBox(
+                        height: 5,
                       ),
                       Text(
-                        'data',
-                        style: TextStyle(fontSize: 20),
-                      )
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.verified_user,
-                        size: 70,
-                      ),
-                      Text(
-                        'data',
-                        style: TextStyle(fontSize: 20),
+                        'More',
+                        style: TextStyle(fontSize: 16),
                       )
                     ],
                   ),
