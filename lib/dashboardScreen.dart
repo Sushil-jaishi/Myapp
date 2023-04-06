@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/imageSlider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -9,103 +10,106 @@ class DashboardScreen extends StatelessWidget {
         margin: EdgeInsets.all(10),
         child: Stack(
           children: [
-            GridView(
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent:
-                      (MediaQuery.of(context).size.width * 0.33)),
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.verified_user,
-                      size: 70,
-                    ),
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 20),
-                    )
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.verified_user,
-                      size: 70,
-                    ),
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 20),
-                    )
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.verified_user,
-                      size: 70,
-                    ),
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 20),
-                    )
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.verified_user,
-                      size: 70,
-                    ),
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 20),
-                    )
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.verified_user,
-                      size: 70,
-                    ),
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 20),
-                    )
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.verified_user,
-                      size: 70,
-                    ),
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 20),
-                    )
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.verified_user,
-                      size: 70,
-                    ),
-                    Text(
-                      'data',
-                      style: TextStyle(fontSize: 20),
-                    )
-                  ],
-                ),
-              ],
+            ImageSlider(),
+            Container(margin: EdgeInsets.only(top: 180),
+              child: GridView(
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent:
+                        (MediaQuery.of(context).size.width * 0.33)),
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.verified_user,
+                        size: 70,
+                      ),
+                      Text(
+                        'data',
+                        style: TextStyle(fontSize: 20),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.verified_user,
+                        size: 70,
+                      ),
+                      Text(
+                        'data',
+                        style: TextStyle(fontSize: 20),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.verified_user,
+                        size: 70,
+                      ),
+                      Text(
+                        'data',
+                        style: TextStyle(fontSize: 20),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.verified_user,
+                        size: 70,
+                      ),
+                      Text(
+                        'data',
+                        style: TextStyle(fontSize: 20),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.verified_user,
+                        size: 70,
+                      ),
+                      Text(
+                        'data',
+                        style: TextStyle(fontSize: 20),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.verified_user,
+                        size: 70,
+                      ),
+                      Text(
+                        'data',
+                        style: TextStyle(fontSize: 20),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.verified_user,
+                        size: 70,
+                      ),
+                      Text(
+                        'data',
+                        style: TextStyle(fontSize: 20),
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),

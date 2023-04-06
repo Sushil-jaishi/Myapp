@@ -11,13 +11,16 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen>{
-  @override
+
   dynamic icon;
   dynamic iconChange;
   dynamic passText;
   var usernameController=TextEditingController();
   var passwordController=TextEditingController();
 
+  final GlobalKey<FormState> _key=new GlobalKey<FormState>();
+
+  @override
   void initState() {
     passText = true;
     icon = true;
@@ -47,102 +50,124 @@ class _LoginScreenState extends State<LoginScreen>{
                               child:
                                   Image.asset('assets/images/sofseetech.png'))),
                       Container(
-                        child: Column(
-                          children: [
+                        child: Form(
+                          key: _key,
+                          child: Column(
+                            children: [
 
-                            Container(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                'Login',
-                                style: TextStyle(
-                                    fontSize: 25,
-                                    color: Colors.black54,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            /********************************USERNAME**************************************/
-                            TextField(
-                              controller: usernameController,
-                              decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.person,
-                                      color: Color.fromRGBO(0, 0, 100, 1)),
-                                  labelText: 'Username',
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(7)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(7),
-                                      borderSide: BorderSide(
-                                        width: 1.6,
-                                        color: Color.fromRGBO(0, 0, 100, 1),
-                                      ))),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            /**********************************PASSWORD**************************************/
-                            TextField(
-                              controller: passwordController,
-                              obscureText: passText,
-                              decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.lock,
-                                      color: Color.fromRGBO(0, 0, 100, 1)),
-                                  labelText: 'Password',
-                                  suffixIcon: IconButton(
-                                    onPressed: () {
-                                      icon = !icon;
-                                      passText = !passText;
-                                      if (icon) {
-                                        iconChange = Icons.visibility;
-                                      } else {
-                                        iconChange = Icons.visibility_off;
-                                      }
-                                      setState(() {});
-                                    },
-                                    icon: Icon(iconChange),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(7)),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(7),
-                                      borderSide: BorderSide(
-                                        width: 1.6,
-                                        color: Color.fromRGBO(0, 0, 100, 1),
-                                      ))),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              alignment: Alignment.topRight,
-                              child: Text('Forgot Password?'),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            /**********************************LOGIN BUTTON**************************************/
-                            Container(
-                              width: double.infinity,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(7),
-                                  border: Border.all(
-                                      width: 1.6,
-                                      color: Color.fromRGBO(0, 0, 100, 1))),
-                              child: OutlinedButton(
-                                onPressed: (){
-                                  userlogin();
-                                },
+                              Container(
+                                alignment: Alignment.topLeft,
                                 child: Text(
-                                  'LOGIN',
+                                  'Login',
                                   style: TextStyle(
-                                      color: Color.fromRGBO(0, 0, 100, 1)),
+                                      fontSize: 25,
+                                      color: Colors.black54,
+                                      fontWeight: FontWeight.w500),
                                 ),
                               ),
-                            ),
-                          ],
+                              SizedBox(
+                                height: 15,
+                              ),
+                              /********************************USERNAME**************************************/
+                              TextFormField(
+                                validator: (value){
+                                  if(value==null||value.isEmpty){
+                                    return 'Required';
+                                  }else{
+                                    return null;
+                                  }
+                                },
+                                controller: usernameController,
+                                decoration: InputDecoration(
+                                    prefixIcon: Icon(Icons.person,
+                                        color: Color.fromRGBO(0, 0, 100, 1)),
+                                    labelText: 'Username',
+                                    enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(7)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(7),
+                                        borderSide: BorderSide(
+                                          width: 1.6,
+                                          color: Color.fromRGBO(0, 0, 100, 1),
+                                        ))),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              /**********************************PASSWORD**************************************/
+                              TextFormField(
+                                validator: (value){
+                                  if(value==null||value.isEmpty){
+                                    return 'Required';
+                                  }else if(value.length<6){
+                                    return 'Weak password';
+                                  }else{
+                                    return null;
+                                  }
+                                },
+                                controller: passwordController,
+                                obscureText: passText,
+                                decoration: InputDecoration(
+                                    prefixIcon: Icon(Icons.lock,
+                                        color: Color.fromRGBO(0, 0, 100, 1)),
+                                    labelText: 'Password',
+                                    suffixIcon: IconButton(
+                                      onPressed: () {
+                                        icon = !icon;
+                                        passText = !passText;
+                                        if (icon) {
+                                          iconChange = Icons.visibility;
+                                        } else {
+                                          iconChange = Icons.visibility_off;
+                                        }
+                                        setState(() {});
+                                      },
+                                      icon: Icon(iconChange),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(7)),
+                                    focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(7),
+                                        borderSide: BorderSide(
+                                          width: 1.6,
+                                          color: Color.fromRGBO(0, 0, 100, 1),
+                                        ))),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                alignment: Alignment.topRight,
+                                child: Text('Forgot Password?'),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              /**********************************LOGIN BUTTON**************************************/
+                              Container(
+                                width: double.infinity,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(7),
+                                    border: Border.all(
+                                        width: 1.6,
+                                        color: Color.fromRGBO(0, 0, 100, 1))),
+                                child: OutlinedButton(
+                                  onPressed: (){
+                                    if(_key.currentState!.validate()){
+                                      userlogin();
+                                    }
+
+                                  },
+                                  child: Text(
+                                    'LOGIN',
+                                    style: TextStyle(
+                                        color: Color.fromRGBO(0, 0, 100, 1)),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
