@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/PasswordChangeScreen.dart';
 import 'package:myapp/loginScreen.dart';
+import 'package:myapp/userDetails.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -54,7 +55,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             .width * 0.8,
                         height: 60,
                         child:  ElevatedButton(
-                          onPressed: (){},
+                          onPressed: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                              return UserDetails();
+                            },));
+                          },
                           child: Row(
                             children: [
                               Icon(Icons.person),
