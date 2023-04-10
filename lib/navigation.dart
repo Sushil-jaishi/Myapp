@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:myapp/eLearning.dart';
 import 'package:myapp/payments.dart';
 import 'package:myapp/profileScreen.dart';
-
 import 'dashboardScreen.dart';
 
 class Navigation extends StatefulWidget {
-
   @override
   State<Navigation> createState() => _NavigationState();
 }
 
 class _NavigationState extends State<Navigation> {
-  var Index = 0;
-  var pagename = 'Home';
-  final tabs = [
+  int Index = 0;
+  String pagename = 'Home';
+  final List<Widget> tabs = [
     DashboardScreen(),
     ELearning(),
     Payments(),
@@ -38,7 +36,9 @@ class _NavigationState extends State<Navigation> {
         type: BottomNavigationBarType.fixed,
         unselectedLabelStyle: TextStyle(fontSize: 12),
         currentIndex: Index,
-        selectedIconTheme: IconThemeData(size: 30,),
+        selectedIconTheme: IconThemeData(
+          size: 30,
+        ),
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -47,7 +47,8 @@ class _NavigationState extends State<Navigation> {
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
             label: 'E-Learning',
-          ),BottomNavigationBarItem(
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.payment),
             label: 'Payments',
           ),

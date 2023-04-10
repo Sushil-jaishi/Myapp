@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:myapp/NavigationBar.dart';
+import 'package:myapp/navigation.dart';
 import 'package:myapp/loginScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -28,25 +28,24 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
   }
-  void checkLoggedIn () async{
-    var isloggedin = await SharedPreferences.getInstance();
-    var Login1 = isloggedin.getBool('login');
+
+  void checkLoggedIn() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    bool? isLoggedIn = pref.getBool('login');
     Timer(Duration(seconds: 1), () {
       Navigator.pushReplacement(context, MaterialPageRoute(
         builder: (context) {
-          checkLoggedIn();
-          if(Login1!=null) {
-            if(Login1) {
+          if (isLoggedIn != null) {
+            if (isLoggedIn) {
               return Navigation();
-            }else{
+            } else {
               return LoginScreen();
             }
-          }else{
+          } else {
             return LoginScreen();
           }
         },
       ));
     });
-
   }
 }

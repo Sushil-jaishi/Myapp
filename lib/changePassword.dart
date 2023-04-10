@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
-class PasswordChange extends StatefulWidget {
+class ChangePassword extends StatefulWidget {
   @override
-  State<PasswordChange> createState() => _PasswordChangeState();
+  State<ChangePassword> createState() => _ChangePasswordState();
 }
 
-class _PasswordChangeState extends State<PasswordChange> {
-  dynamic icon1;
-  dynamic iconChange1;
-  dynamic passText1;
-  dynamic icon2;
-  dynamic iconChange2;
-  dynamic passText2;
-  dynamic icon3;
-  dynamic iconChange3;
-  dynamic passText3;
+class _ChangePasswordState extends State<ChangePassword> {
+  late bool icon1;
+  late IconData iconChange1;
+  late bool passText1;
+  late bool icon2;
+  late IconData iconChange2;
+  late bool passText2;
+  late bool icon3;
+  late IconData iconChange3;
+  late bool passText3;
 
-  var passwordController1 = TextEditingController();
-  var passwordController2 = TextEditingController();
-  var passwordController3 = TextEditingController();
+  TextEditingController passwordController1 = TextEditingController();
+  TextEditingController passwordController2 = TextEditingController();
+  TextEditingController passwordController3 = TextEditingController();
 
   @override
   void initState() {
@@ -56,7 +56,7 @@ class _PasswordChangeState extends State<PasswordChange> {
         title: Text('Change Password'),
       ),
       body: Container(
-        margin: EdgeInsets.only(top: 50,left: 20,right: 20),
+        margin: EdgeInsets.only(top: 50, left: 20, right: 20),
         child: Stack(
           children: [
             SingleChildScrollView(
@@ -66,8 +66,8 @@ class _PasswordChangeState extends State<PasswordChange> {
                     controller: passwordController1,
                     obscureText: passText1,
                     decoration: InputDecoration(
-                        prefixIcon:
-                            Icon(Icons.lock, color: Color.fromRGBO(0, 0, 100, 1)),
+                        prefixIcon: Icon(Icons.lock,
+                            color: Color.fromRGBO(0, 0, 100, 1)),
                         labelText: 'Old Password',
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -91,13 +91,15 @@ class _PasswordChangeState extends State<PasswordChange> {
                               color: Color.fromRGBO(0, 0, 100, 1),
                             ))),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   TextField(
                     controller: passwordController2,
                     obscureText: passText2,
                     decoration: InputDecoration(
-                        prefixIcon:
-                            Icon(Icons.lock, color: Color.fromRGBO(0, 0, 100, 1)),
+                        prefixIcon: Icon(Icons.lock,
+                            color: Color.fromRGBO(0, 0, 100, 1)),
                         labelText: 'New Password',
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -121,13 +123,15 @@ class _PasswordChangeState extends State<PasswordChange> {
                               color: Color.fromRGBO(0, 0, 100, 1),
                             ))),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   TextField(
                     controller: passwordController3,
                     obscureText: passText3,
                     decoration: InputDecoration(
-                        prefixIcon:
-                            Icon(Icons.lock, color: Color.fromRGBO(0, 0, 100, 1)),
+                        prefixIcon: Icon(Icons.lock,
+                            color: Color.fromRGBO(0, 0, 100, 1)),
                         labelText: 'Verify Password',
                         suffixIcon: IconButton(
                           onPressed: () {
@@ -151,7 +155,9 @@ class _PasswordChangeState extends State<PasswordChange> {
                               color: Color.fromRGBO(0, 0, 100, 1),
                             ))),
                   ),
-                  SizedBox(height: 30,),
+                  SizedBox(
+                    height: 30,
+                  ),
                   //Password change button
                   Container(
                     width: double.infinity,
@@ -159,14 +165,12 @@ class _PasswordChangeState extends State<PasswordChange> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(7),
                         border: Border.all(
-                            width: 1.6,
-                            color: Color.fromRGBO(0, 0, 100, 1))),
+                            width: 1.6, color: Color.fromRGBO(0, 0, 100, 1))),
                     child: OutlinedButton(
-                      onPressed: (){},
+                      onPressed: () {},
                       child: Text(
                         'Change Password',
-                        style: TextStyle(
-                            color: Color.fromRGBO(0, 0, 100, 1)),
+                        style: TextStyle(color: Color.fromRGBO(0, 0, 100, 1)),
                       ),
                     ),
                   ),

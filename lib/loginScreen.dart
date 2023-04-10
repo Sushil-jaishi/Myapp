@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/NavigationBar.dart';
-import 'package:myapp/dashboardScreen.dart';
-import 'package:myapp/profileScreen.dart';
+import 'package:myapp/navigation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -10,15 +8,14 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen>{
+class _LoginScreenState extends State<LoginScreen> {
+  late bool icon;
+  late IconData iconChange;
+  late bool passText;
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
-  dynamic icon;
-  dynamic iconChange;
-  dynamic passText;
-  var usernameController=TextEditingController();
-  var passwordController=TextEditingController();
-
-  final GlobalKey<FormState> _key=new GlobalKey<FormState>();
+  final GlobalKey<FormState> _key = new GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -41,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen>{
                 SingleChildScrollView(
                   child: Column(
                     children: [
-                      /**********************************IMAGE****************************************/
+                      //Image
                       Container(
                           margin: EdgeInsets.only(
                               top: MediaQuery.of(context).size.height * 0.2),
@@ -54,7 +51,6 @@ class _LoginScreenState extends State<LoginScreen>{
                           key: _key,
                           child: Column(
                             children: [
-
                               Container(
                                 alignment: Alignment.topLeft,
                                 child: Text(
@@ -68,12 +64,12 @@ class _LoginScreenState extends State<LoginScreen>{
                               SizedBox(
                                 height: 15,
                               ),
-                              /********************************USERNAME**************************************/
+                              //Username
                               TextFormField(
-                                validator: (value){
-                                  if(value==null||value.isEmpty){
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
                                     return 'Required';
-                                  }else{
+                                  } else {
                                     return null;
                                   }
                                 },
@@ -94,14 +90,14 @@ class _LoginScreenState extends State<LoginScreen>{
                               SizedBox(
                                 height: 15,
                               ),
-                              /**********************************PASSWORD**************************************/
+                              //Password
                               TextFormField(
-                                validator: (value){
-                                  if(value==null||value.isEmpty){
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
                                     return 'Required';
-                                  }else if(value.length<6){
+                                  } else if (value.length < 6) {
                                     return 'Weak password';
-                                  }else{
+                                  } else {
                                     return null;
                                   }
                                 },
@@ -143,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen>{
                               SizedBox(
                                 height: 10,
                               ),
-                              /**********************************LOGIN BUTTON**************************************/
+                              //Login Button
                               Container(
                                 width: double.infinity,
                                 height: 40,
@@ -153,11 +149,10 @@ class _LoginScreenState extends State<LoginScreen>{
                                         width: 1.6,
                                         color: Color.fromRGBO(0, 0, 100, 1))),
                                 child: OutlinedButton(
-                                  onPressed: (){
-                                    if(_key.currentState!.validate()){
+                                  onPressed: () {
+                                    if (_key.currentState!.validate()) {
                                       userlogin();
                                     }
-
                                   },
                                   child: Text(
                                     'LOGIN',
@@ -173,7 +168,7 @@ class _LoginScreenState extends State<LoginScreen>{
                     ],
                   ),
                 ),
-                /*****************************************FOOTER ICON****************************************/
+                //Footer Icon
                 Container(
                   margin: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * 0.88,
@@ -190,24 +185,28 @@ class _LoginScreenState extends State<LoginScreen>{
                 ),
               ],
             )));
-
   }
 
-  void userlogin()async {
-    try{
-     await FirebaseAuth.instance.signInWithEmailAndPassword(
-         email: usernameController.text.toString(), password: passwordController.text.toString());
-     var isloggedin=await SharedPreferences.getInstance();
-     isloggedin.setBool('login', true);
-     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-       return Navigation();
-     },));
-    }on FirebaseAuthException catch(e){
-      if(e.code=='user-not-found'){
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('wrong username')));
-      }else if(e.code=='wrong-password'){
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('wrong password')));
-        }
+  void userlogin() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: usernameController.text.toString(),
+          password: passwordController.text.toString());
+      var isloggedin = await SharedPreferences.getInstance();
+      isloggedin.setBool('login', true);
+      Navigator.pushReplacement(context, MaterialPageRoute(
+        builder: (context) {
+          return Navigation();
+        },
+      ));
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('wrong username')));
+      } else if (e.code == 'wrong-password') {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('wrong password')));
+      }
     }
   }
 }
