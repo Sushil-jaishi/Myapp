@@ -6,44 +6,19 @@ class ChangePassword extends StatefulWidget {
 }
 
 class _ChangePasswordState extends State<ChangePassword> {
-  late bool icon1;
-  late IconData iconChange1;
-  late bool passText1;
-  late bool icon2;
-  late IconData iconChange2;
-  late bool passText2;
-  late bool icon3;
-  late IconData iconChange3;
-  late bool passText3;
+  bool icon1 = true;
+  IconData iconChange1 = Icons.visibility;
+  bool passText1 = true;
+  bool icon2 = true;
+  IconData iconChange2 = Icons.visibility;
+  bool passText2 = true;
+  bool icon3 = true;
+  IconData iconChange3 = Icons.visibility;
+  bool passText3 = true;
 
   TextEditingController passwordController1 = TextEditingController();
   TextEditingController passwordController2 = TextEditingController();
   TextEditingController passwordController3 = TextEditingController();
-
-  @override
-  void initState() {
-    passText1 = true;
-    icon1 = true;
-    if (icon1) {
-      iconChange1 = Icons.visibility;
-    } else {
-      iconChange1 = Icons.visibility_off;
-    }
-    passText2 = true;
-    icon2 = true;
-    if (icon2) {
-      iconChange2 = Icons.visibility;
-    } else {
-      iconChange2 = Icons.visibility_off;
-    }
-    passText3 = true;
-    icon3 = true;
-    if (icon3) {
-      iconChange3 = Icons.visibility;
-    } else {
-      iconChange3 = Icons.visibility_off;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -9,24 +9,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  late bool icon;
-  late IconData iconChange;
-  late bool passText;
+  bool icon = true;
+  IconData iconChange = Icons.visibility;
+  bool passText = true;
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   final GlobalKey<FormState> _key = new GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    passText = true;
-    icon = true;
-    if (icon) {
-      iconChange = Icons.visibility;
-    } else {
-      iconChange = Icons.visibility_off;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {

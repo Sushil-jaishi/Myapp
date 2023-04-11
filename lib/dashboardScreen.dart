@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/customWidgets/homeIcon.dart';
+import 'package:myapp/customWidgets/homeIconFromImage.dart';
 import 'package:myapp/imageSlider.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -14,189 +16,45 @@ class DashboardScreen extends StatelessWidget {
             height: 15,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.27,
-                height: MediaQuery.of(context).size.width * 0.27,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      child: Image.asset('assets/images/teachingicon.png'),
-                    ),
-                    Text(
-                      'Online Class',
-                      style: TextStyle(fontSize: 16),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.27,
-                height: MediaQuery.of(context).size.width * 0.27,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.timer,
-                      size: 50,
-                    ),
-                    Text(
-                      'Timetable',
-                      style: TextStyle(fontSize: 16),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.27,
-                height: MediaQuery.of(context).size.width * 0.27,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.calendar_month,
-                      size: 50,
-                    ),
-                    Text(
-                      'Attendace',
-                      style: TextStyle(fontSize: 16),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.27,
-                height: MediaQuery.of(context).size.width * 0.27,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      child: Image.asset('assets/images/exam.png'),
-                    ),
-                    Text(
-                      'Exams',
-                      style: TextStyle(fontSize: 16),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.27,
-                height: MediaQuery.of(context).size.width * 0.27,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      child: Image.asset('assets/images/userclock.png'),
-                    ),
-                    Text(
-                      'Leaves',
-                      style: TextStyle(fontSize: 16),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.27,
-                height: MediaQuery.of(context).size.width * 0.27,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.notifications,
-                      size: 50,
-                    ),
-                    Text(
-                      'Notice',
-                      style: TextStyle(fontSize: 16),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.27,
-                height: MediaQuery.of(context).size.width * 0.27,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.message,
-                      size: 50,
-                    ),
-                    Text(
-                      'Complain',
-                      style: TextStyle(fontSize: 16),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.27,
-                height: MediaQuery.of(context).size.width * 0.27,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 45,
-                      height: 45,
-                      child: Image.asset('assets/images/more.png'),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'More',
-                      style: TextStyle(fontSize: 16),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.27,
-                height: MediaQuery.of(context).size.width * 0.27,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.calendar_month,
-                      size: 50,
-                    ),
-                    Text(
-                      'Attendace',
-                      style: TextStyle(fontSize: 16),
-                    )
-                  ],
-                ),
-              )
+                  HomeIcon(text: 'Online Class', imageUrl: 'assets/images/teachingicon.png',),
+                  HomeIcon(text: 'Timetable', icon: Icons.timer,),
+                  HomeIcon(text: 'Attendace', icon: Icons.calendar_month,),
             ],
           ),
           SizedBox(
-            height: 10,
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+                  HomeIcon(text: 'Exams', imageUrl: 'assets/images/exam.png',),
+                  HomeIcon(text: 'Leaves', imageUrl: 'assets/images/userclock.png',),
+                  HomeIcon(text: 'Notice', icon: Icons.notifications,),
+
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              HomeIcon(text: 'Complain', icon: Icons.message,),
+              HomeIcon(text: 'More', imageUrl: 'assets/images/more.png',),
+              HomeIcon(icon: Icons.calendar_month, text: 'Attendance'),
+            ],
+          ),
+          SizedBox(
+            height: 30,
           ),
           Text(
             'Notice and Announcements',
             style: TextStyle(fontSize: 20),
           ),
           SizedBox(
-            height: 10,
+            height: 20,
           ),
           Container(
             height: 100,
@@ -213,7 +71,7 @@ class DashboardScreen extends StatelessWidget {
             color: Colors.green,
             child: Center(
               child: Text(
-                'Notice 1',
+                'Notice 2',
                 style: TextStyle(fontSize: 16),
               ),
             ),
@@ -223,7 +81,7 @@ class DashboardScreen extends StatelessWidget {
             color: Colors.yellow,
             child: Center(
               child: Text(
-                'Notice 1',
+                'Notice 3',
                 style: TextStyle(fontSize: 16),
               ),
             ),
