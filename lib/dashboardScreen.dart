@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/customWidgets/homeIcon.dart';
-import 'package:myapp/customWidgets/homeIconFromImage.dart';
 import 'package:myapp/imageSlider.dart';
 
 class DashboardScreen extends StatelessWidget {
